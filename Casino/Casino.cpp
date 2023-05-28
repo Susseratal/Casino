@@ -106,7 +106,6 @@ void rules() {
     cout << "\n2 - The dice will roll";
     cout << "\n3 - Winner gets the pot";
     cout << "\n4 - If you run out of money, you will be asked to leave";
-    cout << "\n5 - At the end, a scoreboard will be displayed\n";
 }
 
 int main() {
@@ -193,11 +192,13 @@ int main() {
             system("cls");
             return 0;
         }
+        else {
+			cout << "\n\t\t========== CASINO FLOOR =========\n";
+			for (int i = 0; i <= remainingPlayers; i++) {
+                cout << players[i]->name << " - $" << players[i]->balance << "\n";
+			}
+        }
         
-        cout << "\n\t\t========== CASINO FLOOR =========";
-        cout << "\nName: " << mainPlayer.name;
-        cout << "\nBalance: $" << mainPlayer.balance;
-
         string action;
         cout << "\n>_ ";
         cin >> action;
@@ -310,16 +311,6 @@ int main() {
             cout << "\nInvalid command";
             break;
         }
-
-            /*
-            * Main game loop goes here
-            * Game loop consists of starting a round
-            * Player places a bet on a number
-            *   - NPC's place a bet
-            * Dice are rolled
-            * Whoever gets closest to the number wins the pot. If there are joint winners, the pot is split
-            * If a player runs out of money, they are asked to leave the establishment
-            */
         }
     }
 	return 0;
