@@ -1,8 +1,1 @@
-﻿  Casino.cpp
-C:\Users\iain\Documents\Casino\Casino\Casino.cpp(67,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\iain\Documents\Casino\Casino\Casino.cpp(67,22): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\iain\Documents\Casino\Casino\Casino.cpp(84,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\iain\Documents\Casino\Casino\Casino.cpp(84,22): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\iain\Documents\Casino\Casino\Casino.cpp(112,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\iain\Documents\Casino\Casino\Casino.cpp(276,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Casino.vcxproj -> C:\Users\iain\Documents\Casino\x64\Debug\Casino.exe
+﻿

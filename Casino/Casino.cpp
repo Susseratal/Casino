@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <time.h>
 #include <stdlib.h>
+#include <conio.h>
 
 using namespace std;
 
@@ -102,10 +103,10 @@ void help() {
 void rules() {
     // system("cls");
     cout << "\n\t\t========== GAME RULES =========";
-    cout << "\n1 - Rock up to a table and place a bet - you can only bet whole numbers";
-    cout << "\n2 - The dice will roll";
-    cout << "\n3 - Winner gets the pot";
-    cout << "\n4 - If you run out of money, you will be asked to leave";
+    cout << "\n1 - Place a bet on what number between 2 and 12 you think will appear";
+    cout << "\n2 - Two dice will be rolled, and the numbers will be added together";
+    cout << "\n3 - Whoever's number is closest to the total wins the pot. If more than one person wins, the pot is split evenly";
+    cout << "\n4 - If you run out of money, you will be asked to leave\n";
 }
 
 int main() {
@@ -159,8 +160,10 @@ int main() {
                 if (i == 0) {
 					cout << "\n\t\t========== GAME OVER =========";
 					cout << "\nYou have lost all your money and been asked to leave the casino";
-					break;
-
+					cout << "\nPress return to quit...";
+                    _getch();
+					system("cls");
+					return 0;
                 }
                 cout << players[i]->name << " has run out of money and is being escorted from the premises\n";
                 for (int j = i; j <= numOfPlayers; j++) {
@@ -185,10 +188,9 @@ int main() {
             }
             else {
                 cout << "\nCongratulations, you win! Come back some other time and play again";
-				this_thread::sleep_for(chrono::seconds(5));
             }
             cout << "\nPress return to quit...";
-            cin;
+			_getch();
             system("cls");
             return 0;
         }
@@ -209,10 +211,10 @@ int main() {
             int numChoice;
             int pot = 0;
             do {
-				cout << "Pick a whole number between 2 and 14 ";
+				cout << "Pick a whole number between 2 and 12 ";
                 cin.clear();
                 cin.ignore(256, '\n');
-            } while (!(cin >> numChoice || cin.get() != '\n') || !(numChoice >= 2 && numChoice <= 14));
+            } while (!(cin >> numChoice || cin.get() != '\n') || !(numChoice >= 2 && numChoice <= 12));
             mainPlayer.currentBet = numChoice;
 
             cout << "You have $" << mainPlayer.balance << " to bet\n";
@@ -235,7 +237,7 @@ int main() {
                 pot += players[i]->currentGamble;
             }
 
-            cout << "\nThere is a total of $" << pot << " in the pot...\n";
+            cout << "\nThere is a total of $" << pot << " in the pot\n";
 
             cout << "Rolling die...\n";
 
@@ -244,11 +246,14 @@ int main() {
             int diceOne = rand() % 6 + 1;
             cout << diceOne;
 
+            this_thread::sleep_for(chrono::seconds(2));
+
+            cout << " and ";
             sleepSeconds = rand() % 4 + 1;
             this_thread::sleep_for(chrono::seconds(sleepSeconds));
 
             int diceTwo = rand() % 6 + 1;
-            cout << " and " << diceTwo << "... ";
+            cout << diceTwo << "... ";
             int diceTotal = diceOne + diceTwo;
             cout << "for a total of " << diceTotal << "!\n";
 
