@@ -228,6 +228,7 @@ int main() {
             mainPlayer.currentGamble = gamble;
 
             pot += gamble;
+            mainPlayer.balance -= gamble;
             cout << "\nYou have put $" << gamble << " on the number " << numChoice << " being rolled...\n";
 
             for (int i = 1; i <= remainingPlayers; i++) {
@@ -235,6 +236,7 @@ int main() {
                 players[i]->currentGamble = rand() % players[i]->balance + 1;
                 cout << players[i]->name <<  " bet $" << players[i]->currentGamble << " on the number " << players[i]->currentBet << "\n";
                 pot += players[i]->currentGamble;
+                players[i]->balance -= players[i]->currentGamble;
             }
 
             cout << "\nThere is a total of $" << pot << " in the pot\n";
@@ -271,11 +273,6 @@ int main() {
                 {
                     winners.push_back(players[i]);
                 }
-            }
-
-            for (int i = 0; i <= remainingPlayers; i++) {
-                if (find(winners.begin(), winners.end(), players[i]) == winners.end())
-                    players[i]->balance -= players[i]->currentGamble;
             }
 
             int potSplit = winners.size();
